@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:wildbrevis_shop_app/providers/cart.dart';
+import 'package:wildbrevis_shop_app/widgets/badge.dart';
 import 'package:wildbrevis_shop_app/widgets/products_grid.dart';
 
 enum FilterOptions {
@@ -41,7 +44,19 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
                 value: FilterOptions.All,
               ),
             ],
-          )
+          ),
+          Consumer<CartProvider>(
+            //child of consumer doesn't rebuild!!!
+            builder: (ctx, cart, childOfConsumer) => Badge(
+              child: childOfConsumer,
+              value: cart.itemsCount.toString(),
+            ),
+            //child of consumer doesn't rebuild!!!
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {},
+            ),
+          ),
         ],
       ),
       body: ProductsGrid(showOnlyFavorites: _showOnlyFavorites),

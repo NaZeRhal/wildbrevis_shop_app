@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:wildbrevis_shop_app/providers/cart.dart';
 import 'package:wildbrevis_shop_app/providers/product.dart';
 import 'package:wildbrevis_shop_app/screens/product_detail.dart';
 
@@ -16,7 +17,8 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(context, listen: false);
+    final product = Provider.of<ProductProvider>(context, listen: false);
+    final cart = Provider.of<CartProvider>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.all(
@@ -36,7 +38,7 @@ class ProductItem extends StatelessWidget {
           ),
         ),
         footer: GridTileBar(
-          leading: Consumer<Product>(
+          leading: Consumer<ProductProvider>(
             builder: (context, product, child) => IconButton(
               icon: Icon(
                 product.isFavorite ? Icons.favorite : Icons.favorite_border,
@@ -55,7 +57,11 @@ class ProductItem extends StatelessWidget {
           trailing: IconButton(
             icon: Icon(Icons.shopping_cart),
             color: Theme.of(context).accentColor,
-            onPressed: () {},
+            onPressed: () {
+              cart.addItem(product.id, product.price, product.name);
+              // cart.items.forEach((key, value) => print(
+              //     'ProductId: $key, Product: id -> ${value.id}, name -> ${value.name}'));
+            },
           ),
         ),
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wildbrevis_shop_app/providers/cart.dart';
 import 'package:wildbrevis_shop_app/providers/products_provider.dart';
 import 'package:wildbrevis_shop_app/screens/product_detail.dart';
 import 'package:wildbrevis_shop_app/screens/products_overview_page.dart';
@@ -11,8 +12,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (ctx) => ProductsProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => ProductsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (ctx) => CartProvider(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Wildbrevis',
         theme: ThemeData(
