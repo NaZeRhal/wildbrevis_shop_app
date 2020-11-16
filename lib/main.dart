@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wildbrevis_shop_app/providers/cart.dart';
 import 'package:wildbrevis_shop_app/providers/products_provider.dart';
+import 'package:wildbrevis_shop_app/screens/cart_page.dart';
 import 'package:wildbrevis_shop_app/screens/product_detail.dart';
 import 'package:wildbrevis_shop_app/screens/products_overview_page.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Wildbrevis',
         theme: ThemeData(
+          primaryTextTheme: TextTheme(
+            headline1: TextStyle(
+              color: Colors.white,
+            ),
+          ),
           primarySwatch: Colors.purple,
           accentColor: Colors.amber,
           fontFamily: 'Lato',
@@ -31,6 +37,7 @@ class MyApp extends StatelessWidget {
         home: ProductsOverviewPage(),
         routes: {
           ProductDetailPage.routeName: (ctx) => ProductDetailPage(),
+          CartPage.routeName: (ctx) => CartPage(),
         },
       ),
     );

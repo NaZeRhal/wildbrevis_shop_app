@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wildbrevis_shop_app/providers/cart.dart';
+import 'package:wildbrevis_shop_app/screens/cart_page.dart';
 import 'package:wildbrevis_shop_app/widgets/badge.dart';
 import 'package:wildbrevis_shop_app/widgets/products_grid.dart';
 
@@ -54,7 +55,9 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
             //child of consumer doesn't rebuild!!!
             child: IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartPage.routeName);
+              },
             ),
           ),
         ],
