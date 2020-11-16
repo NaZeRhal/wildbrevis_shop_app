@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wildbrevis_shop_app/providers/cart.dart' show CartProvider;
+import 'package:wildbrevis_shop_app/providers/cart_provider.dart'
+    show CartProvider;
+import 'package:wildbrevis_shop_app/providers/orders_provider.dart';
+import 'package:wildbrevis_shop_app/screens/orders_page.dart';
 import 'package:wildbrevis_shop_app/widgets/cart_item.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatelessWidget {
   static const routeName = '/cart';
@@ -41,7 +45,16 @@ class CartPage extends StatelessWidget {
                     backgroundColor: Theme.of(context).primaryColor,
                   ),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<OrdersProvider>(context, listen: false)
+                          .addOrder(
+                        cartProvider.items.values.toList(),
+                        cartProvider.totalSum,
+                      );
+                      cartProvider.clear();
+                      // Navigator.of(context)
+                      //     .pushReplacementNamed(OrdersPage.routeName);
+                    },
                     child: Text('ORDER NOW'),
                     textColor: Theme.of(context).primaryColor,
                   )

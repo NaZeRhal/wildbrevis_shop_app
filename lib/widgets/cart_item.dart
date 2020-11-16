@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:wildbrevis_shop_app/providers/cart.dart';
+import 'package:wildbrevis_shop_app/providers/cart_provider.dart';
 
 class CartItem extends StatelessWidget {
   final String id;

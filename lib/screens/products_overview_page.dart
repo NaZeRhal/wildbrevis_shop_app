@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wildbrevis_shop_app/providers/cart.dart';
+import 'package:wildbrevis_shop_app/providers/cart_provider.dart';
 import 'package:wildbrevis_shop_app/screens/cart_page.dart';
+import 'package:wildbrevis_shop_app/widgets/app_drawer.dart';
 import 'package:wildbrevis_shop_app/widgets/badge.dart';
 import 'package:wildbrevis_shop_app/widgets/products_grid.dart';
 
@@ -62,6 +63,7 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
           ),
         ],
       ),
+      drawer: AppDrawer(),
       body: ProductsGrid(showOnlyFavorites: _showOnlyFavorites),
     );
   }

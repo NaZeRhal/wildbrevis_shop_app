@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:wildbrevis_shop_app/providers/cart.dart';
+import 'package:wildbrevis_shop_app/providers/cart_provider.dart';
+import 'package:wildbrevis_shop_app/providers/orders_provider.dart';
 import 'package:wildbrevis_shop_app/providers/products_provider.dart';
 import 'package:wildbrevis_shop_app/screens/cart_page.dart';
+import 'package:wildbrevis_shop_app/screens/orders_page.dart';
 import 'package:wildbrevis_shop_app/screens/product_detail.dart';
 import 'package:wildbrevis_shop_app/screens/products_overview_page.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +23,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (ctx) => CartProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (ctx) => OrdersProvider(),
+        ),
       ],
       child: MaterialApp(
         title: 'Wildbrevis',
@@ -38,6 +43,7 @@ class MyApp extends StatelessWidget {
         routes: {
           ProductDetailPage.routeName: (ctx) => ProductDetailPage(),
           CartPage.routeName: (ctx) => CartPage(),
+          OrdersPage.routeName: (ctx) => OrdersPage(),
         },
       ),
     );
