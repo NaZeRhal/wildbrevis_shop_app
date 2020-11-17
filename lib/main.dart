@@ -3,10 +3,12 @@ import 'package:wildbrevis_shop_app/providers/cart_provider.dart';
 import 'package:wildbrevis_shop_app/providers/orders_provider.dart';
 import 'package:wildbrevis_shop_app/providers/products_provider.dart';
 import 'package:wildbrevis_shop_app/screens/cart_page.dart';
+import 'package:wildbrevis_shop_app/screens/edit_product_page.dart';
 import 'package:wildbrevis_shop_app/screens/orders_page.dart';
 import 'package:wildbrevis_shop_app/screens/product_detail.dart';
 import 'package:wildbrevis_shop_app/screens/products_overview_page.dart';
 import 'package:provider/provider.dart';
+import 'package:wildbrevis_shop_app/screens/user_products_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,6 +46,8 @@ class MyApp extends StatelessWidget {
           ProductDetailPage.routeName: (ctx) => ProductDetailPage(),
           CartPage.routeName: (ctx) => CartPage(),
           OrdersPage.routeName: (ctx) => OrdersPage(),
+          UserProductsPage.routeName: (ctx) => UserProductsPage(),
+          EditProductPage.routeName: (ctx) => EditProductPage(),
         },
       ),
     );
