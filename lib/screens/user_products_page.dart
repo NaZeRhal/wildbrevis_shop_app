@@ -29,6 +29,7 @@ class UserProductsPage extends StatelessWidget {
           itemBuilder: (ctx, index) => Column(
             children: [
               UserProductItem(
+                id: productsProvider.items[index].id,
                 name: productsProvider.items[index].name,
                 imageUrl: productsProvider.items[index].imageUrl,
               ),

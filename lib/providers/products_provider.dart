@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:wildbrevis_shop_app/providers/product.dart';
 
 class ProductsProvider with ChangeNotifier {
@@ -47,8 +49,47 @@ class ProductsProvider with ChangeNotifier {
     return _items.where((product) => product.isFavorite).toList();
   }
 
-  void addProduct(ProductProvider product) {
-    _items.add(product);
+  Future<void> addProduct(ProductProvider product) {
+    const url = 'https://fluttertestapp-b5e73.firebaseio.com/products.json';
+    return http
+        .post(
+      url,
+      body: json.encode(
+        {
+          'title': product.name,
+          'description': product.description,
+          'imageUrl': product.imageUrl,
+          'price': product.price,
+          'isFavorite': product.isFavorite,
+        },
+      ),
+    )
+        .then((response) {
+      final newProduct = ProductProvider(
+        id: json.decode(response.body)['name'],
+        name: product.name,
+        price: product.price,
+        description: product.description,
+        imageUrl: product.imageUrl,
+      );
+      _items.add(newProduct);
+      notifyListeners();
+    }).catchError((error) {
+      print(error);
+      throw error;
+    });
+  }
+
+  void updateProduct(String id, ProductProvider product) {
+    final prodIndex = _items.indexWhere((prod) => prod.id == id);
+    if (prodIndex >= 0) {
+      _items[prodIndex] = product;
+      notifyListeners();
+    }
+  }
+
+  void deleteProduct(String id) {
+    _items.removeWhere((element) => element.id == id);
     notifyListeners();
   }
 
