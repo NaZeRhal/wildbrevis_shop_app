@@ -24,15 +24,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   var _isLoading = false;
 
   @override
-  void initState() {
-    // Provider.of<Products>(context).fetchAndSetProducts(); // WON'T WORK!
-    // Future.delayed(Duration.zero).then((_) {
-    //   Provider.of<Products>(context).fetchAndSetProducts();
-    // });
-    super.initState();
-  }
-
-  @override
   void didChangeDependencies() {
     if (_isInit) {
       setState(() {
@@ -52,7 +43,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyShop'),
+        title: Text('Wildbrevis'),
         actions: <Widget>[
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {

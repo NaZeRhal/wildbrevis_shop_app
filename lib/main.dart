@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-          title: 'MyShop',
+          title: 'Wildbrevis',
           theme: ThemeData(
             primarySwatch: Colors.purple,
             accentColor: Colors.amber,
